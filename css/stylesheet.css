@@ -1,0 +1,33 @@
+body {
+	background: url('Bird.jpg') no-repeat center center fixed;
+	min-height: 100%;
+	min-width: 100%;
+}
+
+.tweet {
+    width: 400px;
+    height: 600px;
+    position: fixed;
+    left: 50%;
+    top: 50%; 
+    margin-left: -200px;
+    margin-top: -300px;
+	border-radius: 15px;
+	padding: 10px 10px;
+	background: rgba(44, 189, 255,.8);
+}
+
+h1 {
+	color: #fff;
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+p {
+	color: #fff;
+	font-weight: 300;
+	font-family: 'Lato', sans-serif;
+	text-align: center;
+}
