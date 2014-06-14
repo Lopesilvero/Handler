@@ -1,4 +1,5 @@
-#H@ndler by *@Lopesilvero*
+#H@ndler
+*by @Lopesilvero*
 =======
 
 **H@ndler is an online tool to easily create a series of tweets directed at a group of Twitter handles.**
@@ -13,17 +14,17 @@ With H@ndler, the organizer is able to direct interested participants to a quick
 
 
 ##Tasks In Progress
-*Connect form to logic that creates Tweets
-*Determine way of displaying Tweets
-*Fix responsive issues (Background & form does not fill screen)
-*Adjust logic to automatically determine if there is a link within link field rather than the original checkbox method.
+* Connect form to logic that creates Tweets
+* Determine way of displaying Tweets
+* Fix responsive issues (Background & form does not fill screen)
+* Adjust logic to automatically determine if there is a link within link field rather than the original checkbox method.
 
 
 ##Future Features
-*Validation for Twitter handle field
-*Twitter integration that automatically posts Tweets without having to copy & paste
-*Approve Tweets before they are sent to Twitter
-*Animation for when Tweets are being posted
-*Automatically determine if the tweet has a link.
-*Order Twitter handles by length on the backend in order to create the least amount of Tweets
-*Allow a user to save their list of Twitter handles
+* Validation for Twitter handle field
+* Twitter integration that automatically posts Tweets without having to copy & paste
+* Approve Tweets before they are sent to Twitter
+* Animation for when Tweets are being posted
+* Automatically determine if the tweet has a link.
+* Order Twitter handles by length on the backend in order to create the least amount of Tweets
+* Allow a user to save their list of Twitter handles
