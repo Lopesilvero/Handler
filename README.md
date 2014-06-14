@@ -1,7 +1,6 @@
 #H@ndler
 *by @Lopesilvero*
-=======
-
+--------
 **H@ndler is an online tool to easily create a series of tweets directed at a group of Twitter handles.**
 
 
