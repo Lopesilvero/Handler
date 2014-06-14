@@ -1,5 +1,5 @@
 body {
-	background: url('Bird.jpg') no-repeat center center fixed;
+	background: #55ACEE;
 	min-height: 100%;
 	min-width: 100%;
 }
@@ -14,7 +14,7 @@ body {
     margin-top: -300px;
 	border-radius: 15px;
 	padding: 10px 10px;
-	background: rgba(44, 189, 255,.8);
+	background: rgba(0, 0, 0,.3);
 }
 
 h1 {
