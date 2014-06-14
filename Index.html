@@ -3,20 +3,59 @@
 	
 	<head>
 		<meta charset="utf-8">
+		
+		<title>Handler - Easily organize community events via Twitter!</title>
 
+		<!-- Bootstrap Core CSS -->
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+		<!-- Fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 
+		<!-- Custom CSS -->
 		<link href="css/stylesheet.css" rel="stylesheet">
 
-		<script src="js/jquery.js"></script>
-		<script src="js/Tweet.js"></script>
 	</head>
+	
 	<body>
-		<div class="tweet">
-			<div class="header">
-				<h1>Your Tweet</h1>
-				<p>#OpenBeer heads to Hilltop Tavern this Friday at 5PM!</p>
+		<div class="row tweetbuilder">
+			<div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+				<div class="panel">
+					<div class="panel-heading text-center">
+						<h1>H@ndler</h1>
+						<p>Easily organize community events from your Twitter followers.</p>
+					</div>				
+					<div class="panel-body">
+						<form role="form">
+							<div class="form-group">
+								<label for="inputTweet">Tweet:</label>
+								<input type="text" class="form-control" id="inputTweet" placeholder="Enter your tweet" maxlength="140">
+							</div>
+							<div class="form-group">
+								<label for="tweetLink">If you would like to include a link, paste it here:</label>
+								<input type="text" class="form-control" id="tweetLink" placeholder="Shortlinks preferred">
+							</div>
+							<div class="form-group">
+								<label for="handleList">List of Twitter Handles: (one per line, no spaces)</label>
+								<textarea class="form-control" id="handleList" rows="10"></textarea>
+							</div>
+							<div class="form-group text-center">
+								<input class="btn btn-default btn-lg" type="submit" value="Create Tweets!">
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
+		
+	    <!-- Core JavaScript Files -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	    <script src="js/bootstrap.js"></script>
+		
+		
+		<!-- Custom JavaScript -->
+		<script src="js/jquery.js"></script>
+		<script src="js/tweet.js"></script>
+		
 	</body>
 </html>

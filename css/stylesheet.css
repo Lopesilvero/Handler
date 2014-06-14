@@ -1,20 +1,28 @@
 body {
-	background: #55ACEE;
-	min-height: 100%;
-	min-width: 100%;
+	background: url(../img/woodbg-unsplash.jpg) no-repeat;
+	background-size: cover;
+	color: #fff;
+	font-weight: 300;
+	font-family: 'Lato', sans-serif;
 }
 
-.tweet {
-    width: 400px;
-    height: 600px;
-    position: fixed;
-    left: 50%;
-    top: 50%; 
-    margin-left: -200px;
-    margin-top: -300px;
-	border-radius: 15px;
-	padding: 10px 10px;
-	background: rgba(0, 0, 0,.3);
+.tweetbuilder {
+	margin-top: 60px;
+}
+
+.panel {
+	background: rgba(0, 0, 0,.5);
+	border-radius: 12px;
+	border: none;
+}
+
+.panel-heading {
+	color: #fff;
+	font-weight: 300;
+	font-family: 'Lato', sans-serif;
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+	border: none;
 }
 
 h1 {
@@ -22,12 +30,4 @@ h1 {
 	font-family: 'Lato', sans-serif;
 	font-weight: 300;
 	text-transform: uppercase;
-	text-align: center;
-}
-
-p {
-	color: #fff;
-	font-weight: 300;
-	font-family: 'Lato', sans-serif;
-	text-align: center;
 }
