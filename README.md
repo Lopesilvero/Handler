@@ -15,13 +15,12 @@ With H@ndler, the organizer is able to direct interested participants to a quick
 
 ##Tasks In Progress
 * Connect form to logic that creates Tweets
-* Determine way of displaying Tweets
-* Fix responsive issues (Background & form does not fill screen)
+* Determine way of displaying constructed Tweets
 * Adjust logic to automatically determine if there is a link within link field rather than the original checkbox method.
 
 
 ##Future Features
-* Validation for Twitter handle field
+* Validation for Twitter handle field - Make sure only one handle per line and @ is used before string
 * Twitter integration that automatically posts Tweets without having to copy & paste
 * Approve Tweets before they are sent to Twitter
 * Animation for when Tweets are being posted
