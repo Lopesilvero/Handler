@@ -5,7 +5,6 @@ require 'twitter'
 
 class Handler < Sinatra::Base
   # register Sinatra::ActiveRecordExtension
-  # set :database, {adapter: 'postgresql', database: ENV['DATABASE_URL']}
 
   configure do
     enable :sessions
@@ -16,19 +15,25 @@ class Handler < Sinatra::Base
   end
 
   get '/' do
-    redirect to('/auth/twitter') unless session[:access_token]
+    redirect to('/unauthenticated') unless session[:access_token]
+
     @name = session[:name]
     erb :index
   end
 
-  get '/post-tweet' do
+  get '/unauthenticated' do
+    erb :unauthenticated
+  end
+
+  post '/post-tweet' do
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
       config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
       config.access_token        = session[:access_token]
       config.access_token_secret = session[:access_secret]
     end
-    client.update("test from handler /cc @Lopesilvero")
+
+    client.update(params[:tweet]) if params[:tweet]
     redirect to('/')
   end
    
@@ -37,12 +42,16 @@ class Handler < Sinatra::Base
   end
    
   get '/logout' do
+    session[:name] = nil
+    session[:access_token] = nil
+    session[:access_secret] = nil
+
     redirect to('/')
   end
 
   get '/auth/twitter/callback' do
     halt(401,'Not Authorized') unless env['omniauth.auth']
-    # session[:omniauth] = env['omniauth.auth']
+
     session[:name] = env['omniauth.auth'][:info][:name]
     session[:access_token] = env['omniauth.auth'][:credentials][:token]
     session[:access_secret] = env['omniauth.auth'][:credentials][:secret]
