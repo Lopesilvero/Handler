@@ -1,11 +1,15 @@
+# Pull in some gems for functionality
 require 'sinatra/base'
 # require 'sinatra/activerecord'
 require 'omniauth-twitter'
 require 'twitter'
 
+# Define our modular Sinatra app
 class Handler < Sinatra::Base
   # register Sinatra::ActiveRecordExtension
 
+  # Configure our app
+  # Enable sessions and set up omniauth-twitter with our keys
   configure do
     enable :sessions
 
@@ -14,6 +18,10 @@ class Handler < Sinatra::Base
     end
   end
 
+  # Index action
+  # GET /
+  #
+  # Allows authenticated users to use H@ndler
   get '/' do
     redirect to('/unauthenticated') unless session[:access_token]
 
@@ -21,11 +29,27 @@ class Handler < Sinatra::Base
     erb :index
   end
 
+  # Index action
+  # GET /unauthenticated
+  #
+  # Prompts users to sign in with Twitter
   get '/unauthenticated' do
     erb :unauthenticated
   end
 
+  # Post Tweet action
+  # POST /post-tweet
+  #
+  # Allows authenticated users to send tweets from their account.
+  #
+  # We use twitter to authenticate with Twitter's REST API
+  # using our consumer keys and the user's access keys
+  #
+  # Params:
+  #   - tweet - string - text of tweet to send
   post '/post-tweet' do
+    redirect to('/unauthenticated') unless session[:access_token]
+
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
       config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
@@ -37,10 +61,18 @@ class Handler < Sinatra::Base
     redirect to('/')
   end
    
+  # Login action
+  # GET /login
+  #
+  # Allows authenticated users to use H@ndler
   get '/login' do
     redirect to('/auth/twitter')
   end
    
+  # Logout action
+  # GET /logout
+  #
+  # Deletes session data to logout a user
   get '/logout' do
     session[:name] = nil
     session[:access_token] = nil
@@ -49,6 +81,10 @@ class Handler < Sinatra::Base
     redirect to('/')
   end
 
+  # Twitter Auth Callback action
+  # GET /auth/twitter/callback
+  #
+  # Receives authentication info from Twitter after user signs in 
   get '/auth/twitter/callback' do
     halt(401,'Not Authorized') unless env['omniauth.auth']
 
@@ -59,6 +95,10 @@ class Handler < Sinatra::Base
     redirect to('/')
   end
 
+  # Auth Failure action
+  # GET /auth/failure
+  #
+  # Displays reason for an authentication failure
   get '/auth/failure' do
     params[:message]
   end

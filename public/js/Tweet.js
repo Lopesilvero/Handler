@@ -1,8 +1,13 @@
+// Create an IIFE to prevent our vars and methods from using 
+// the window's scope
 (function (window, document, $, undefined) {
+  // Grab references to our input fields
   var inputTweet = document.getElementById('inputTweet'),
       tweetLink = document.getElementById('tweetLink'),
       handleList = document.getElementById('handleList');
 
+  // Create an object responsible for data and functionality
+  // of our app
   var app = {
     maxTweetLength: 140,
     USERNAMEMAX: 15,
@@ -102,11 +107,15 @@
       return app.tweets;
     },
 
+    // Grabs link text from input field to use later
+    // TODO: We should validate the link here
     parseLink: function parseLink(linkText) {
       app.link = linkText;
     },
 
+    // Parses Twitter handles from the textarea
     parseHandles: function parseHandles(handlesText) {
+      // turn our string into an array of lines
       app.handles = handlesText.split("\n").
         // remove empty lines
         filter(function (item) { return typeof item !== 'undefined' && item !== null && item !== ''; }).
@@ -128,10 +137,13 @@
       }
     },
 
+    // Builds the contents of the tweets to preview and later send
+    // TODO: add in logic to switch between before and after formatting
     buildTweets: function buildTweets() {
       app.formTweetsBefore(inputTweet.value);
     },
 
+    // Generates HTML for previewing built tweets
     showTweets: function showTweets() {
       var html = '',
           count = app.tweets.length;
@@ -144,10 +156,12 @@
       $('#tweet-previews').html(html);
     },
 
+    // Starts the loop to send all tweets
     sendTweets: function sendTweets() {
       app.sendTweet(0);
     },
 
+    // Sends an individual tweet item to our `/post-tweet` endpoint
     sendTweet: function sendTweet(i) {
       var tweet = app.tweets[i];
       console.log(tweet);
@@ -157,14 +171,17 @@
         data: { tweet: tweet },
         success: function () {
           if (app.tweets.length === i+1) {
+            // if at the end of the list, stop and reset
             app.reset();
           } else {
+            // f there are more, send the next tweet
             app.sendTweet(i+1);
           }
         }
       });
     },
 
+    // Resets our form to the initial state
     reset: function reset() {
       inputTweet.value = '';
       tweetLink.value = '';
@@ -182,6 +199,11 @@
       $('#main-panel').show();
     },
 
+    // Controls switching states
+    //
+    // 'warn' presents an error message after validation
+    // 'confirm' previews built tweets prior to sending
+    // 'verify' validates user's inputs
     updateState: function updateState() {
       $('.view-panel').hide();
       $('#error-message').hide();
@@ -211,8 +233,10 @@
       }}
   };
 
+  // Wait until the DOM is ready to add our event handlers
   $(document).ready(function () {
 
+    // Capture the form submission, and handle everything client-side
     $('form').submit(function (e) {
       e.preventDefault();
 
