@@ -53,3 +53,9 @@ $ bundle install
 # Start foreman (serves app on http://localhost:5000)
 $ foreman start
 ```
+
+### Resources
+
+- [Sinatra](http://www.sinatrarb.com/)
+- [Bundler](http://bundler.io)
+- [Foreman](https://github.com/ddollar/foreman)
