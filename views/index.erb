@@ -1,64 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-  
-  <head>
-    <meta charset="utf-8">
-    
-    <title>Handler - Easily organize community events via Twitter!</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
-
-    <!-- Custom CSS -->
-    <link href="css/stylesheet.css" rel="stylesheet">
-
-  </head>
-  
-  <body>
-    <div class="row tweetbuilder">
-      <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
-        <div class="panel">
-          <div class="panel-heading text-center">
-            <h1>H@ndler</h1>
-            <p>Easily organize community events from your Twitter followers.</p>
-          </div>        
-          <div class="panel-body">
-            <form role="form">
-              <div class="form-group">
-                <h3>Hi <%= @name %>!</h3>
-              </div>
-              <div class="form-group">
-                <label for="inputTweet">Tweet:</label>
-                <input type="text" class="form-control" id="inputTweet" placeholder="Enter your tweet" maxlength="140">
-              </div>
-              <div class="form-group">
-                <label for="tweetLink">If you would like to include a link, paste it here:</label>
-                <input type="text" class="form-control" id="tweetLink" placeholder="Shortlinks preferred">
-              </div>
-              <div class="form-group">
-                <label for="handleList">List of Twitter Handles: (one per line, no spaces)</label>
-                <textarea class="form-control" id="handleList" rows="10"></textarea>
-              </div>
-              <div class="form-group text-center">
-                <input class="btn btn-default btn-lg" type="submit" value="Create Tweets!">
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+<form role="form">
+  <div id="main-panel" class="view-panel">
+    <div class="form-group">
+      <h3>Hi <%= @name %>!</h3>
     </div>
-    
-      <!-- Core JavaScript Files -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-      <script src="js/bootstrap.js"></script>
-    
-    
-    <!-- Custom JavaScript -->
-    <script src="js/jquery.js"></script>
-    <script src="js/tweet.js"></script>
-    
-  </body>
-</html>
+    <div id="error-message" class="form-group" style="display:none;">
+      <div class="alert alert-warning"></div>
+    </div>
+    <div class="form-group">
+      <label for="inputTweet">Tweet:</label>
+      <input type="text" class="form-control" id="inputTweet" placeholder="Enter your tweet" maxlength="140">
+    </div>
+    <div class="form-group">
+      <label for="tweetLink">If you would like to include a link, paste it here:</label>
+      <input type="text" class="form-control" id="tweetLink" placeholder="Shortlinks preferred">
+    </div>
+    <div class="form-group">
+      <label for="handleList">List of Twitter Handles: (one per line)</label>
+      <textarea class="form-control" id="handleList" rows="10"></textarea>
+    </div>
+    <div class="form-group text-center">
+      <a class="btn btn-info btn-lg" href="/logout">Logout</a>
+      <input class="btn btn-default btn-lg" type="submit" value="Create Tweets!">
+    </div>
+  </div>
+  <div id="confirmation-panel" class="view-panel" style="display:none;">
+    <ul id="tweet-previews">
+    </ul>
+    <div class="form-group text-center">
+      <a class="btn btn-info btn-lg reset" href="#">Reset</a>
+      <input class="btn btn-default btn-lg" type="submit" value="Send Tweets!">
+    </div>
+  </div>
+  <div id="sending-panel" class="view-panel" style="display:none;">
+  </div>
+</form>
